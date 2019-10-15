@@ -1,0 +1,38 @@
+rails g scaffold post title:string body:text
+
+rails db:migrate
+
+root 'posts#index'
+
+https://github.com/plataformatec/devise
+gem 'devise'
+bundle install
+rails generate devise:install
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+rails g devise user
+
+rails db:migrate
+
+class Post < ApplicationRecord
+  belongs_to :user
+
+class User < ApplicationRecord
+  has_many :posts
+
+rails g migration add_user_id_to_post
+
+  	change_table :posts do |t|
+  		t.belongs_to :user
+  	end
+
+rais db:migarate
+
+before_action :authenticate_user!
+
+before_action :authenticate_user!, except: [:index, :show]
+
+    @post.user_id = current_user.id
+
